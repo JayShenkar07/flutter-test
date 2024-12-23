@@ -3,7 +3,7 @@ name: Flutter CI
 on:
   push:
     branches:
-      - main
+      - varun
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
