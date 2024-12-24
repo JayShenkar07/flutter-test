@@ -37,12 +37,17 @@ jobs:
       - run: flutter build apk --release 
       - run: flutter build appbundle --release
 
+      # Check if the bundle and apk is generated 
+      - run: ls -la build/app/outputs/apk/release/
+      - run: ls -la build/app/outputs/bundle/release/
+
       - uses: ncipollo/release-action@v1
         with:
           name: release-apk-and-abb
           artifacts: |
-            build/app/outputs/apk/release/* 
             build/app/outputs/bundle/release/*
+            build/app/outputs/apk/release/* 
+
           tag: v0.0.1
           token: ${{ secrets.JAY_GHP_SECRET }}
 
