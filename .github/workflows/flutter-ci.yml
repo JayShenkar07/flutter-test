@@ -34,11 +34,15 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter analyze .
-      - run: flutter build apk --release --split-per-abi
+      - run: flutter build apk --release 
+      - run: flutter build appbundle --release
 
       - uses: ncipollo/release-action@v1
         with:
-          name: release-apk
-          artifacts: "build/app/outputs/apk/release/*"
+          name: release-apk-and-abb
+          artifacts: |
+            build/app/outputs/apk/release/* 
+            build/app/outputs/bundle/release/*
           tag: v0.0.1
           token: ${{ secrets.JAY_GHP_SECRET }}
+
